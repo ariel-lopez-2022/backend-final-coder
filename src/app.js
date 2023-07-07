@@ -29,7 +29,7 @@ server.use(cors({
     credentials:true,  
 }))
 
-const httpServer = server.listen(PORT, () => 
+const httpServer = server.listen(PORT || 3000,  () => 
  logger.debug(`🔥 Server started on port http://localhost:${PORT}`),
 )
 
