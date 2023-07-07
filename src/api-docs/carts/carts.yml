@@ -1,0 +1,32 @@
+paths:
+  /api/carts/:
+    post:
+      summary: Crear Carrito de Compra
+      tags:
+        - 'Carts'
+      responses:
+        '200':
+          description: Carrito Creado con exito
+        '500':
+          description: No se pudo Crear Carrito
+        '401':
+          description: Usuario no Autorizado / o no logeado  
+  /api/carts/{cid}:
+    get:
+      summary: Visualiza Carrito por Id
+      tags:
+        - 'Carts'
+      parameters:
+        - name: cid
+          in: path
+          description: identificador del carrito
+          required: true
+          schema:
+            $type: String
+      responses:
+        '200':
+          description: Carrito Encontrado
+        '401':
+          description: Carrito no encontrado
+        '500':
+          description: Se produjo un error al obtener el carrito        

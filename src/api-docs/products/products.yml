@@ -1,0 +1,174 @@
+paths:
+  /api/products/:
+    get:
+      summary: obtiene todos los productos de la base de datos
+      tags:
+        - 'Products'
+      responses:
+        '200':
+          description: Se obtuvieron los productos correctamente
+        '500':
+          description: Se produjo un error en la conexion del servidor
+    post:
+      summary: Agregar producto en la bd
+      tags:
+        - 'Products'
+      responses:
+        '200':
+          description: Se Agrego producto correctamente
+        '401':
+          description: Usuario No autorizado  
+        '500':
+          description: Error al Agregar producto  
+#       requestBody:
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/requestBodies/addProductBd'      
+# components:            
+#   requestBodies:
+#     addProductBd:
+#       type: object
+#       properties:
+#         title:
+#           type: String
+#           description: Titulo del Producto
+#         description:
+#           type: String
+#           description: Descripcion del Producto
+#         code:
+#           type: String
+#           description: Codigo del Producto
+#         price:
+#           type: Number
+#           description: Precio del Producto
+#         status:
+#           type: Boolean 
+#           description: Estado del Producto
+#         stock: 
+#           type: Number
+#           description: Cantidad del Producto 
+#         category:
+#           type: String
+#           description: Categoria del Producto
+#         owner:
+#           type: String
+#           description: Creador del Producto
+#         thumbnail:
+#           type: String
+#           description: Link Imagen del Producto
+#       example:
+#         title: "Mery1"
+#         description: "textil 500g "
+#         code: "mery1"
+#         price: 750
+#         status: true
+#         stock: 10
+#         category: "chico1"
+#         thumbnail: "Enlase 1"           
+
+  /api/products/{pid}:
+    get:
+      summary: obtiene Producto por ID
+      tags:
+        - 'Products'
+      parameters:
+        - name: pid
+          in: path
+          description: identificador del producto
+          required: true
+          schema:
+            $type: String
+      responses:
+        '200':
+          description: Se obtuvo el producto correctamente
+        '401':
+          description: Producto no encontrado 
+    put:
+      summary: Actualizar producto en la bd
+      tags:
+        - 'Products'
+      parameters:
+        - name: pid
+          in: path
+          description: identificador del producto
+          required: true
+          schema:
+            $type: String
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/updateProductBd'
+      responses:
+        '200':
+          description: Se Agrego producto correctamente
+        '403':
+          description: El id ingresado no es el correcto  
+        '500':
+          description: Error al actualizar producto  
+components:            
+  requestBodies:
+    updateProductBd:
+      type: object
+      properties:
+        title:
+          type: String
+          description: Titulo del Producto
+        description:
+          type: String
+          description: Descripcion del Producto
+        code:
+          type: String
+          description: Codigo del Producto
+        price:
+          type: Number
+          description: Precio del Producto
+        status:
+          type: Boolean 
+          description: Estado del Producto
+        stock: 
+          type: Number
+          description: Cantidad del Producto 
+        category:
+          type: String
+          description: Categoria del Producto
+        owner:
+          type: String
+          description: Creador del Producto
+        thumbnail:
+          type: String
+          description: Link Imagen del Producto
+      example:
+        title: "MeryActualizado1"
+        description: "textil 500g "
+        code: "mery1"
+        price: 750
+        status: true
+        stock: 10
+        category: "chico1"
+        thumbnail: "Enlase 1"    
+    
+    delete:
+      summary: Eliminar producto en la bd
+      tags:
+        - 'Products'
+      parameters:
+        - name: pid
+          in: path
+          description: identificador del producto
+          required: true
+          schema:
+            $type: String
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/deleteProductBd'
+      responses:
+        '200':
+          description: Se eliminaron los productos correctamente
+        '401':
+          description: Producto No Existe 
+        '500':
+          description: Se produjo un error en la conexion del servidor   
