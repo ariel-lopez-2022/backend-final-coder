@@ -9,12 +9,11 @@ const { default: mongoose } = require("mongoose");
 const { logger } = require("../config/config.winston");
 
 const cookieEstractor = (req) =>{
- 
-  let token = null;
+   let token = null;
   if(req && req.cookies) {
     token = req.cookies[COOKIE_USER]
   }
-  console.log(token) 
+ 
   return token;
    
 } 
@@ -70,7 +69,7 @@ passport.use(
                   cart:id,
                   rol: "administrador",
                 });
-                done(false,{status:"success", message:"Usuario Registrado con Exito"} );
+                done(false,user,{status:"success", message:"Usuario Registrado con Exito"} );
               } else {
                  if (rol === "premium"){
                   const user = await sesionServices.createUser({
@@ -82,6 +81,7 @@ passport.use(
                     cart:id,
                     rol:"premium"
                   }); 
+                  done(null,user,{status:"success", message:"Usuario Registrado con Exito"} );
                  } else{
                   
                   const user = await sesionServices.createUser({
@@ -93,13 +93,13 @@ passport.use(
                     cart:id,
                     
                   }); 
-                 }done(null,false,{status:"success", message:"Usuario Registrado con Exito"} );
+                  done(null,user,{status:"success", message:"Usuario Registrado con Exito"} );
+                }
               }
             }
 
         } catch (error) {
-             
-            done(error)
+             done(error)
         }
       }
     )

@@ -10,7 +10,7 @@ registerForm.addEventListener("submit", (e) => {
   })
   .then((res) => res.json())
   .then((data) => {
-   
+    console.log(data)
     if(data.status !== "error"){
       Swal.fire({
         title: `${data.message}`,

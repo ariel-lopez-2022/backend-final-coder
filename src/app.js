@@ -24,7 +24,7 @@ const cors = require('cors');
 if (MONGODBURL) import('./config/config.db.js');
 
 server.use(cors({
-    origin:'http://127.0.0.1:5173',
+    origin:'https://backend-final-coder-production.up.railway.app',
     //origin:'http://localhost:5173',
     credentials:true,  
 }))

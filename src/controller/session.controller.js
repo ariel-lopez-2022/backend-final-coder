@@ -110,6 +110,7 @@ const sessionLogin = async (req, res) => {
 
 const loginRegister = (req, res) => {
   logger.info("cliente Registrado con exito");
+  console.log(req.user)   
   res.send(req.user);
 };
 
