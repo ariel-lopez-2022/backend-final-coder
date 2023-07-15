@@ -23,7 +23,13 @@ const cors = require('cors');
 
 if (MONGODBURL) import('./config/config.db.js');
 
-server.use(cors())
+const corsOrigin ={
+    origin:'http://localhost:5173/', 
+    credentials:true,            
+    optionSuccessStatus:200
+}
+server.use(cors(corsOrigin));
+
 
 const httpServer = server.listen(PORT || 3000,  () => 
  console.log(`🔥 Server started on port http://localhost:${PORT}`),
