@@ -24,7 +24,7 @@ const cors = require('cors');
 if (MONGODBURL) import('./config/config.db.js');
 
 
-server.use(cors());
+server.use('*'.cors());
 
 
 const httpServer = server.listen(PORT || 3000,  () => 
