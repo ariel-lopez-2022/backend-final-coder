@@ -26,7 +26,7 @@ if (MONGODBURL) import('./config/config.db.js');
 server.use(cors())
 
 const httpServer = server.listen(PORT || 3000,  () => 
- logger.debug(`🔥 Server started on port http://localhost:${PORT}`),
+ console.log(`🔥 Server started on port http://localhost:${PORT}`),
 )
 
 //handlerbars
