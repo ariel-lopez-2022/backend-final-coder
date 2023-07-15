@@ -69,7 +69,7 @@ passport.use(
                   cart:id,
                   rol: "administrador",
                 });
-                done(false,user,{status:"success", message:"Usuario Registrado con Exito"} );
+                done(false,{status:"success", message:"Usuario Registrado con Exito"} );
               } else {
                  if (rol === "premium"){
                   const user = await sesionServices.createUser({
@@ -81,7 +81,7 @@ passport.use(
                     cart:id,
                     rol:"premium"
                   }); 
-                  done(null,user,{status:"success", message:"Usuario Registrado con Exito"} );
+                  done(null,{status:"success", message:"Usuario Registrado con Exito"} );
                  } else{
                   
                   const user = await sesionServices.createUser({
@@ -93,7 +93,7 @@ passport.use(
                     cart:id,
                     
                   }); 
-                  done(null,user,{status:"success", message:"Usuario Registrado con Exito"} );
+                  done(null,{status:"success", message:"Usuario Registrado con Exito"} );
                 }
               }
             }
